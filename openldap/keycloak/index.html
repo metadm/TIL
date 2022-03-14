@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Setup a user federation with Keycloak | Today I Learned</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="developed with vuepress">
+    
+    <link rel="preload" href="/TIL/assets/css/0.styles.4ffee034.css" as="style"><link rel="preload" href="/TIL/assets/js/app.189a55e0.js" as="script"><link rel="preload" href="/TIL/assets/js/2.c29e763b.js" as="script"><link rel="preload" href="/TIL/assets/js/14.ae65131b.js" as="script"><link rel="prefetch" href="/TIL/assets/js/10.7ab94865.js"><link rel="prefetch" href="/TIL/assets/js/11.02b7c2fa.js"><link rel="prefetch" href="/TIL/assets/js/12.f1ebf9e0.js"><link rel="prefetch" href="/TIL/assets/js/13.beda2dc5.js"><link rel="prefetch" href="/TIL/assets/js/15.4e99f3d9.js"><link rel="prefetch" href="/TIL/assets/js/3.0a7616c2.js"><link rel="prefetch" href="/TIL/assets/js/4.99a477e4.js"><link rel="prefetch" href="/TIL/assets/js/5.ce1c5a80.js"><link rel="prefetch" href="/TIL/assets/js/6.501f12d7.js"><link rel="prefetch" href="/TIL/assets/js/7.cc00a80e.js"><link rel="prefetch" href="/TIL/assets/js/8.54530316.js"><link rel="prefetch" href="/TIL/assets/js/9.366e2d24.js">
+    <link rel="stylesheet" href="/TIL/assets/css/0.styles.4ffee034.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/TIL/" class="home-link router-link-active"><img src="https://vuepress.github.io/images/hero.png" alt="Today I Learned" class="logo"> <span class="site-name can-hide">Today I Learned</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/kubemeta" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  repository
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/kubemeta" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  repository
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/TIL/" aria-current="page" class="sidebar-link">Home</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/TIL/openldap/" class="sidebar-heading clickable router-link-active open"><span>Openldap</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/TIL/openldap/install-server/" class="sidebar-link">Install Openldap server</a></li><li><a href="/TIL/openldap/config-with-ssl/" class="sidebar-link">Configure Openldap with SSL</a></li><li><a href="/TIL/openldap/install-client/" class="sidebar-link">Install Openldap client</a></li><li><a href="/TIL/openldap/keycloak/" aria-current="page" class="active sidebar-link">Setup a user federation with Keycloak</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/TIL/openldap/keycloak/#prerequisite" class="sidebar-link">prerequisite</a></li></ul></li><li><a href="/TIL/openldap/python-ldap/" class="sidebar-link">Ldap client API for Python</a></li><li><a href="/TIL/openldap/create-cert/" class="sidebar-link">사설 인증서 발급</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="setup-a-user-federation-with-keycloak"><a href="#setup-a-user-federation-with-keycloak" class="header-anchor">#</a> Setup a user federation with Keycloak</h1> <h2 id="prerequisite"><a href="#prerequisite" class="header-anchor">#</a> prerequisite</h2> <h3 id="enviroment"><a href="#enviroment" class="header-anchor">#</a> enviroment</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ls</span> -al
+</code></pre></div><p>위와 같이 한다.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/TIL/openldap/install-client/" class="prev">
+        Install Openldap client
+      </a></span> <span class="next"><a href="/TIL/openldap/python-ldap/">
+        Ldap client API for Python
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/TIL/assets/js/app.189a55e0.js" defer></script><script src="/TIL/assets/js/2.c29e763b.js" defer></script><script src="/TIL/assets/js/14.ae65131b.js" defer></script>
+  </body>
+</html>
